@@ -9,18 +9,20 @@ const list = document.getElementById('todo-list')
 const itemCountSpan = document.getElementById('item-count')
 const uncheckedCountSpan = document.getElementById('unchecked-count')
 
-function newTodo() {
-  var todoList = document.getElementById("todo-list");
-  var todoItem = document.createElement("li");
-  var todoText = document.createTextNode("New TODO item");
-  todoItem.appendChild(todoText);
-  todoList.appendChild(todoItem);
-  var itemCount = document.getElementById("item-count");
-  itemCount.textContent = parseInt(itemCount.textContent) + 1;
-  
-  var uncheckedCount = document.getElementById("unchecked-count");
-  uncheckedCount.textContent = parseInt(uncheckedCount.textContent) + 1;
-  
+function addTodo() {
+  const todoList = document.getElementById("todo-list");
+  const todoInput = prompt("Enter a new TODO:");
+  if (todoInput) {
+    const newTodo = document.createElement("li");
+    newTodo.innerHTML = `
+      <span>${todoInput}</span>
+      <button class="delete-button">Delete</button>
+    `;
+    todoList.appendChild(newTodo);
+    updateItemCount();
+  }
 }
+
+  
 
 
